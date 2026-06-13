@@ -77,69 +77,80 @@ export default function Home() {
         id="process"
         className="relative z-10 px-6 py-28 md:px-14 md:py-36"
       >
-        <div className="relative ml-2 max-w-6xl rounded-[10px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,248,236,0.08),rgba(255,248,236,0.03))] p-8 shadow-[0_28px_90px_rgba(0,0,0,0.22)] backdrop-blur-2xl md:ml-8 md:p-12">
-          <div className="absolute left-0 top-0 h-36 w-36 bg-[radial-gradient(circle_at_top_left,rgba(214,168,79,0.14),transparent_72%)]" />
-          <div className="absolute inset-x-0 top-0 h-px bg-white/16" />
-
-          <div className="relative grid gap-14 md:grid-cols-[0.82fr_1.18fr] md:items-start">
-            <div>
+        <div className="ml-2 max-w-6xl md:ml-8">
+          <div className="grid gap-16 md:grid-cols-[0.78fr_1.22fr] md:gap-20">
+            <div className="md:pt-10">
               <p className="text-sm font-medium uppercase tracking-[0.24em] text-[#D6A84F]">
                 Process
               </p>
-              <h2 className="mt-4 max-w-3xl text-4xl font-light leading-[1.02] text-[#FFF8EC] md:text-[4.15rem]">
+              <h2 className="mt-4 max-w-3xl text-4xl font-light leading-[1.02] text-[#FFF8EC] md:text-[4.2rem]">
                 Build the workflow, ship the system, keep improving it.
               </h2>
               <p className="mt-6 max-w-xl text-base leading-7 text-[#FFF8EC]/62 md:text-lg md:leading-8">
-                A compact delivery model built to keep execution clear: we map
-                the operation, install the right AI layer, then refine the
-                system with reporting and live feedback.
+                A delivery model built to stay sharp under real operating
+                pressure: practical upfront mapping, clean implementation, and
+                refinement once the system is live.
               </p>
+
+              <div className="mt-10 flex items-center gap-4 text-xs uppercase tracking-[0.24em] text-[#FFF8EC]/36">
+                <span className="h-px w-16 bg-[#D6A84F]/45" />
+                <span>Structured delivery</span>
+              </div>
             </div>
 
-            <div className="grid gap-5 text-[#FFF8EC]/74">
-              {[
-                {
-                  title: "Map the current intake, sales, and follow-up flow.",
-                  detail:
-                    "We start with the real operating sequence so the system fits how the team already works.",
-                },
-                {
-                  title:
-                    "Build the AI layer around the handoffs your team already uses.",
-                  detail:
-                    "Automation, agents, and logic are added where they reduce friction instead of creating another tool to manage.",
-                },
-                {
-                  title:
-                    "Launch with clear reporting so each week gets sharper.",
-                  detail:
-                    "Once live, the system is tuned using performance visibility, edge cases, and actual conversion behaviour.",
-                },
-              ].map((step, index) => (
-                <div
-                  key={step.title}
-                  className="group rounded-[8px] border border-white/10 bg-white/[0.035] p-6 transition duration-300 hover:border-white/16 hover:bg-white/[0.05] md:p-7"
-                >
-                  <div className="flex items-start justify-between gap-6">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.28em] text-[#D6A84F]">
-                        Step 0{index + 1}
-                      </p>
-                      <p className="mt-4 text-2xl font-light leading-snug text-[#FFF8EC] md:text-[2rem]">
-                        {step.title}
-                      </p>
+            <div className="relative pl-0 md:pl-12">
+              <div className="absolute left-0 top-0 hidden h-full w-px bg-[linear-gradient(180deg,rgba(214,168,79,0.45),rgba(255,248,236,0.08)_18%,rgba(255,248,236,0.02)_100%)] md:block" />
+
+              <div className="grid gap-6 md:gap-7">
+                {[
+                  {
+                    title: "Map the current intake, sales, and follow-up flow.",
+                    detail:
+                      "We begin with the actual sequence of conversations, handoffs, and bottlenecks so the system fits the business instead of forcing a new operating habit.",
+                  },
+                  {
+                    title:
+                      "Build the AI layer around the handoffs your team already uses.",
+                    detail:
+                      "Automation, agents, and software logic are introduced where they remove friction, speed up execution, and preserve the points where human judgement still matters.",
+                  },
+                  {
+                    title:
+                      "Launch with clear reporting so each week gets sharper.",
+                    detail:
+                      "Once live, the system is tuned through reporting, exception handling, and real usage patterns so performance improves rather than drifting over time.",
+                  },
+                ].map((step, index) => (
+                  <div
+                    key={step.title}
+                    className={`group relative overflow-hidden border-t border-white/10 pt-6 text-[#FFF8EC]/74 md:pt-7 ${
+                      index === 1 ? "md:ml-10" : ""
+                    } ${index === 2 ? "md:ml-20" : ""}`}
+                  >
+                    <div className="absolute left-0 top-0 hidden h-px w-24 bg-[#D6A84F]/50 md:block" />
+                    <div className="absolute -left-[3.05rem] top-7 hidden h-3 w-3 rounded-full border border-[#D6A84F]/60 bg-[#0B0604] shadow-[0_0_18px_rgba(214,168,79,0.3)] md:block" />
+
+                    <div className="flex items-start justify-between gap-6">
+                      <div className="max-w-3xl">
+                        <p className="text-xs uppercase tracking-[0.28em] text-[#D6A84F]">
+                          Step 0{index + 1}
+                        </p>
+                        <p className="mt-4 text-2xl font-light leading-snug text-[#FFF8EC] md:text-[2.2rem]">
+                          {step.title}
+                        </p>
+                      </div>
+
+                      <div className="hidden text-sm tracking-[0.24em] text-[#FFF8EC]/24 transition duration-300 group-hover:text-[#D6A84F]/78 md:block">
+                        0{index + 1}
+                      </div>
                     </div>
 
-                    <div className="mt-1 text-sm tracking-[0.24em] text-[#FFF8EC]/28 transition duration-300 group-hover:text-[#D6A84F]/78">
-                      0{index + 1}
-                    </div>
+                    <p className="mt-5 max-w-2xl text-base leading-7 text-[#FFF8EC]/58 md:text-[1.02rem] md:leading-8">
+                      {step.detail}
+                    </p>
                   </div>
-
-                  <p className="mt-5 max-w-2xl border-t border-white/8 pt-5 text-base leading-7 text-[#FFF8EC]/60">
-                    {step.detail}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
