@@ -61,6 +61,7 @@ export default function HeroGradient() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#030201]/52 via-[#030201]/18 to-[#030201]/08" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#030201]/8 to-[#030201]/58" />
       <div className="absolute inset-y-0 right-0 w-[28vw] bg-gradient-to-l from-[#030201]/28 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_82%,rgba(3,2,1,0.42),transparent_24%)]" />
     </div>
   );
 }
