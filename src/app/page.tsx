@@ -2,6 +2,7 @@ import Image from "next/image";
 import AutomationCoreHero from "@/components/AutomationCoreHero";
 import AutomationStory from "@/components/AutomationStory";
 import HeroGradient from "@/components/HeroGradient";
+import ScrollOrchestrator from "@/components/ScrollOrchestrator";
 
 const CAL_LINK = "https://cal.com/your-link-here";
 
@@ -88,10 +89,14 @@ const faqs = [
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-clip bg-[#030201] text-[#FFF8EC]">
+      <ScrollOrchestrator />
       <HeroGradient />
 
-      <nav className="relative z-20 px-6 pt-5 md:px-14 md:pt-7">
-        <div className="mx-auto flex w-full max-w-[118rem] items-center rounded-full border border-white/8 bg-[rgba(8,6,5,0.24)] px-4 py-3 backdrop-blur-md md:px-7">
+      <nav
+        className="relative z-20 px-6 pt-5 md:px-14 md:pt-7"
+        data-reveal="zoom"
+      >
+        <div className="mx-auto flex w-full max-w-[118rem] items-center py-3 md:py-4">
           <a href="#top" className="flex items-center gap-4">
             <Image
               src="/criyx-logo.avif"
@@ -126,7 +131,7 @@ export default function Home() {
 
           <a
             href={CAL_LINK}
-            className="ml-auto rounded-full border border-[#D6A84F]/28 bg-[#FFF8EC]/10 px-5 py-2.5 text-sm uppercase tracking-[0.18em] text-[#FFF8EC] transition hover:bg-[#FFF8EC] hover:text-[#080402] md:ml-10"
+            className="ml-auto rounded-full border border-[#D6A84F]/24 bg-[#FFF8EC]/8 px-5 py-2.5 text-sm uppercase tracking-[0.18em] text-[#FFF8EC] transition hover:bg-[#FFF8EC] hover:text-[#080402] md:ml-10"
           >
             Schedule Call
           </a>
@@ -138,6 +143,7 @@ export default function Home() {
       <section
         id="positioning"
         className="relative z-10 px-6 py-24 md:px-14 md:py-32"
+        data-reveal="card"
       >
         <div className="mx-auto grid w-full max-w-[118rem] gap-12 border-t border-white/8 pt-14 md:grid-cols-[0.7fr_1.3fr] md:items-start md:pt-18">
           <div>
@@ -173,6 +179,7 @@ export default function Home() {
       <section
         id="services"
         className="relative z-10 px-6 py-24 md:px-14 md:py-34"
+        data-reveal="card"
       >
         <div className="mx-auto w-full max-w-[118rem]">
           <div className="grid gap-10 border-b border-white/8 pb-14 md:grid-cols-[0.64fr_1.36fr] md:items-end">
@@ -194,6 +201,8 @@ export default function Home() {
               <article
                 key={service.title}
                 className="grid gap-6 border-b border-white/8 py-8 md:grid-cols-[0.14fr_0.96fr_0.9fr] md:items-start md:gap-10 md:py-10"
+                data-reveal={index % 2 === 0 ? "left" : "right"}
+                data-delay={String(index * 70)}
               >
                 <div className="text-xs uppercase tracking-[0.28em] text-[#D6A84F]">
                   {service.id}
@@ -220,6 +229,7 @@ export default function Home() {
       <section
         id="process"
         className="relative z-10 px-6 py-28 md:px-14 md:py-36"
+        data-reveal="card"
       >
         <div className="mx-auto w-full max-w-[118rem]">
           <div className="grid gap-12 border-t border-white/8 pt-14 md:grid-cols-[0.62fr_1.38fr] md:pt-18">
@@ -237,6 +247,8 @@ export default function Home() {
                 <div
                   key={step}
                   className="relative min-h-[16rem] overflow-hidden rounded-[1.5rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,248,236,0.06),rgba(255,248,236,0.015))] p-6"
+                  data-reveal="zoom"
+                  data-delay={String(index * 90)}
                 >
                   <div className="absolute inset-x-0 top-0 h-px bg-white/14" />
                   <p className="text-xs uppercase tracking-[0.26em] text-[#D6A84F]">
@@ -263,7 +275,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="faq" className="relative z-10 px-6 py-28 md:px-14 md:py-34">
+      <section
+        id="faq"
+        className="relative z-10 px-6 py-28 md:px-14 md:py-34"
+        data-reveal="card"
+      >
         <div className="mx-auto w-full max-w-[118rem]">
           <div className="grid gap-12 border-t border-white/8 pt-14 md:grid-cols-[0.56fr_1.44fr] md:pt-18">
             <div>
@@ -280,6 +296,8 @@ export default function Home() {
                 <details
                   key={item.question}
                   className="group rounded-[1.35rem] border border-white/9 bg-[linear-gradient(180deg,rgba(255,248,236,0.05),rgba(255,248,236,0.015))] px-6 py-5"
+                  data-reveal="zoom"
+                  data-delay={String(faqs.indexOf(item) * 80)}
                 >
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-xl font-light text-[#FFF8EC] marker:content-none md:text-[1.8rem]">
                     <span>{item.question}</span>
@@ -300,6 +318,7 @@ export default function Home() {
       <section
         id="contact"
         className="relative z-10 px-6 pt-12 pb-18 md:px-14 md:pt-18 md:pb-24"
+        data-reveal="card"
       >
         <div className="mx-auto w-full max-w-[118rem] border-t border-white/8 pt-14 md:pt-18">
           <div className="grid gap-12 md:grid-cols-[0.62fr_1.38fr] md:items-start">

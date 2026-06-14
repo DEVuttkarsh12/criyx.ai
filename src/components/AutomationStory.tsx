@@ -72,6 +72,7 @@ export default function AutomationStory() {
     <section
       id="automation-flow"
       className="relative z-10 px-6 py-32 md:px-14 md:py-40"
+      data-reveal="card"
     >
       <div className="mx-auto w-full max-w-[118rem]">
         <div className="grid gap-10 border-b border-white/8 pb-16 md:grid-cols-[0.55fr_1.45fr] md:items-end">
@@ -95,7 +96,10 @@ export default function AutomationStory() {
 
         <div className="mt-14 grid gap-16 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
           <div className="lg:sticky lg:top-20 lg:h-[calc(100vh-7rem)]">
-            <div className="relative h-[28rem] overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,248,236,0.07),rgba(255,248,236,0.015))] p-6 backdrop-blur-md md:h-[34rem] md:p-8 lg:h-full">
+            <div
+              className="relative h-[28rem] overflow-hidden rounded-[1.75rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,248,236,0.07),rgba(255,248,236,0.015))] p-6 backdrop-blur-md md:h-[34rem] md:p-8 lg:h-full"
+              data-reveal="left"
+            >
               <div className="absolute inset-x-0 top-0 h-px bg-white/16" />
               <div className="absolute left-0 top-0 h-40 w-40 bg-[radial-gradient(circle_at_top_left,rgba(214,168,79,0.14),transparent_72%)]" />
               <div className="absolute inset-x-[14%] top-[14%] bottom-[14%] rounded-[1.5rem] border border-white/7" />
@@ -169,6 +173,8 @@ export default function AutomationStory() {
                 key={step}
                 data-story-step={index}
                 className="grid min-h-[62vh] content-center border-t border-white/8 pt-8 first:border-t-0 first:pt-0"
+                data-reveal={index % 2 === 0 ? "right" : "left"}
+                data-delay={String(index * 60)}
               >
                 <div className="grid gap-5 md:grid-cols-[auto_1fr] md:gap-8">
                   <div className="text-xs uppercase tracking-[0.28em] text-[#D6A84F]">
