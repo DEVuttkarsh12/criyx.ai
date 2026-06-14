@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SiteCursor } from "@/components/ui/site-cursor";
+import { SiteLoader } from "@/components/ui/site-loader";
+import { SiteShaderGradientBackground } from "@/components/ui/site-shader-gradient-background";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,7 +31,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#090000]">
+        <SiteShaderGradientBackground />
+        <SiteCursor />
+        <SiteLoader>{children}</SiteLoader>
+      </body>
     </html>
   );
 }

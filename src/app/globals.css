@@ -1,8 +1,11 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 :root {
-  --background: #030201;
-  --foreground: #fff8ec;
+  --background: #090000;
+  --foreground: #f4f6fa;
+  --sky-300: 203 92% 53%;
+  --gray-300: 0 0% 70%;
 }
 
 @theme inline {
@@ -10,15 +13,15 @@
   --color-foreground: var(--foreground);
   --color-card: rgba(255, 255, 255, 0.04);
   --color-card-foreground: var(--foreground);
-  --color-muted-foreground: rgba(255, 248, 236, 0.62);
+  --color-muted-foreground: rgba(185, 192, 202, 0.72);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #030201;
-    --foreground: #fff8ec;
+    --background: #090000;
+    --foreground: #f4f6fa;
   }
 }
 
@@ -41,7 +44,60 @@ a {
   text-decoration: none;
 }
 
+.site-surface {
+  background-image:
+    radial-gradient(circle at 18% 14%, rgba(255, 185, 128, 0.08), transparent 22%),
+    radial-gradient(circle at 82% 18%, rgba(74, 6, 6, 0.22), transparent 26%),
+    radial-gradient(circle at 48% 76%, rgba(28, 0, 0, 0.24), transparent 28%);
+  background-attachment: fixed;
+}
+
+.site-section-warm {
+  position: relative;
+}
+
+.site-section-warm::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 16% 20%, rgba(255, 185, 128, 0.07), transparent 26%),
+    radial-gradient(circle at 78% 24%, rgba(84, 8, 8, 0.18), transparent 24%),
+    linear-gradient(180deg, rgba(9, 0, 0, 0.03), rgba(9, 0, 0, 0.1));
+  z-index: 0;
+}
+
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor summary,
+  html.has-custom-cursor input,
+  html.has-custom-cursor textarea,
+  html.has-custom-cursor select,
+  html.has-custom-cursor label,
+  html.has-custom-cursor [role="button"] {
+    cursor: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
+  [data-scroll-frame] {
+    transform:
+      perspective(1800px)
+      translate3d(0, 0, 0)
+      rotateX(0deg)
+      rotateY(0deg)
+      scale(1);
+    transform-origin: center center;
+    transition:
+      transform 220ms linear,
+      opacity 220ms linear;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+  }
+
   [data-reveal] {
     --reveal-delay: 0ms;
     opacity: 0;
@@ -89,8 +145,54 @@ a {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-spotlight {
   animation: spotlight 2.2s ease 0.2s 1 forwards;
+}
+
+.animate-fade-in-long {
+  animation: fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-thought-bubble {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0) scale(0.96);
+  will-change: opacity, transform, filter;
+  animation: thoughtBubbleFloat 8.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.hero-thought-tail {
+  position: absolute;
+  left: 1.25rem;
+  bottom: -0.5rem;
+  width: 1rem;
+  height: 1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(11, 14, 19, 0.82);
+  transform: rotate(45deg);
+  backdrop-filter: blur(14px);
+}
+
+.typewriter-caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.88em;
+  margin-left: 0.08em;
+  vertical-align: -0.08em;
+  background: rgba(244, 246, 250, 0.92);
+  box-shadow: 0 0 16px rgba(244, 246, 250, 0.42);
+  animation: blinkCaret 0.9s steps(1, end) infinite;
 }
 
 .loader {
@@ -105,5 +207,36 @@ a {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes blinkCaret {
+  0%,
+  48% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes thoughtBubbleFloat {
+  0%,
+  100% {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(0, 18px, 0) scale(0.96);
+  }
+  10%,
+  30% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  40% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translate3d(0, -12px, 0) scale(1.02);
   }
 }
