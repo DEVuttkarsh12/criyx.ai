@@ -15,6 +15,8 @@ export default function SiteNav({ calLink }: SiteNavProps) {
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
   const [productsOpen, setProductsOpen] = useState(false);
+  const isActiveLink = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
 
   useEffect(() => {
     if (!productsOpen) {
@@ -69,7 +71,9 @@ export default function SiteNav({ calLink }: SiteNavProps) {
             {MAIN_NAV_LINKS.map((item) => (
               <Link
                 key={item.label}
-                className="transition hover:text-white"
+                className={`transition ${
+                  isActiveLink(item.href) ? "text-white" : "hover:text-white"
+                }`}
                 href={item.href}
                 onClick={() => setProductsOpen(false)}
               >
@@ -166,7 +170,9 @@ export default function SiteNav({ calLink }: SiteNavProps) {
           {MAIN_NAV_LINKS.map((item) => (
             <Link
               key={item.label}
-              className="shrink-0 transition hover:text-white"
+              className={`shrink-0 transition ${
+                isActiveLink(item.href) ? "text-white" : "hover:text-white"
+              }`}
               href={item.href}
               onClick={() => setProductsOpen(false)}
             >

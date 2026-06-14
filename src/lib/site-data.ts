@@ -1,10 +1,90 @@
 export const CAL_LINK = "https://cal.com/your-link-here";
 
 export const MAIN_NAV_LINKS = [
-  { label: "About", href: "/#positioning" },
-  { label: "Services", href: "/#services" },
-  { label: "Flow", href: "/#automation-flow" },
-  { label: "FAQ", href: "/#faq" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Flow", href: "/flow" },
+  { label: "FAQ", href: "/faq" },
+] as const;
+
+export const SERVICES = [
+  {
+    id: "01",
+    title: "WhatsApp AI Automation",
+    copy:
+      "Lead capture, instant reply logic, routing, reminders, and escalation flows designed around how people already message.",
+  },
+  {
+    id: "02",
+    title: "Voice AI Agents",
+    copy:
+      "Inbound and outbound voice systems for confirmations, qualification, reminders, and operational coverage.",
+  },
+  {
+    id: "03",
+    title: "CRM Automation",
+    copy:
+      "Contact updates, status changes, pipeline hygiene, and internal handoffs without manual admin work.",
+  },
+  {
+    id: "04",
+    title: "Lead Qualification Systems",
+    copy:
+      "AI-led question flows, scoring logic, segmentation, and booking readiness built into the revenue path.",
+  },
+  {
+    id: "05",
+    title: "AI Marketing Agents",
+    copy:
+      "Campaign support systems that respond, organize demand, and keep early-stage conversations moving.",
+  },
+  {
+    id: "06",
+    title: "Business Analytics Agent",
+    copy:
+      "Reporting layers that combine activity, pipeline movement, and conversion signals into a usable decision view.",
+  },
+] as const;
+
+export const PROCESS_STEPS = [
+  "Discover",
+  "Design Automation",
+  "Build System",
+  "Test & Launch",
+  "Optimize",
+] as const;
+
+export const FAQS = [
+  {
+    question: "What does Criyx build?",
+    answer:
+      "Criyx builds AI automation systems around lead capture, messaging, CRM workflows, qualification, booking flows, and analytics. The goal is an operational system, not a disconnected demo.",
+  },
+  {
+    question: "Can it connect with WhatsApp?",
+    answer:
+      "Yes. WhatsApp can be part of the intake, qualification, reminder, routing, and escalation flow depending on the business model and tooling setup.",
+  },
+  {
+    question: "Can it connect with CRM?",
+    answer:
+      "Yes. Criyx can connect automation into CRM workflows so records, lead states, notes, and follow-up triggers stay current automatically.",
+  },
+  {
+    question: "Do you build voice agents?",
+    answer:
+      "Yes. Voice agents can be used for inbound triage, confirmations, reminders, and repeatable communication tasks with clear handoff rules.",
+  },
+  {
+    question: "How long does an automation system take?",
+    answer:
+      "Timeline depends on scope, systems involved, and how much custom logic is required. Smaller flows can move quickly; broader multi-step systems take longer because the handoffs need to be designed properly.",
+  },
+  {
+    question: "Can it be customized for each business?",
+    answer:
+      "Yes. The systems are built around the actual workflow, team structure, channels, and conversion path of the business rather than a one-size-fits-all template.",
+  },
 ] as const;
 
 export type ProductPageDefinition = {
